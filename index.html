@@ -421,17 +421,17 @@
 
          // Use Unsplash Source API — no key needed, returns a random matching photo
          const query = encodeURIComponent(city + ' city skyline');
-         const url = `https://loremflickr.com/1920/1080/${encodeURIComponent(city)},city,skyline`;
+         const url   = `https://source.unsplash.com/1920x1080/?${query}`;
 
          const img = new Image();
          img.onload = () => {
-            bgLayer.style.backgroundImage = url('${img.src}');
+            bgLayer.style.backgroundImage = `url('${img.src}')`;
             bgLayer.classList.remove('loading');
          };
          img.onerror = () => {
             // Fallback: try just the city name
             bgLayer.style.backgroundImage =
-               url('https://source.unsplash.com/1920x1080/?${encodeURIComponent(city)}');
+               `url('https://source.unsplash.com/1920x1080/?${encodeURIComponent(city)}')`;
             bgLayer.classList.remove('loading');
          };
          img.src = url;
@@ -478,7 +478,7 @@
       // ── Init chatroom ─────────────────────────────────────────────────────
 
       var chatroom = new window.Chatroom({
-         host: "https://ubiquitous-journey-v6xwxv5q5p753xg77-5005.app.github.dev",
+         host: "https://probable-carnival-969776w6xw5x374v5-5005.app.github.dev",
          title: "Chat with a bot",
          container: document.querySelector(".chat-container"),
          welcomeMessage: "Nice to meet you. Ask me about the weather in any city!",
